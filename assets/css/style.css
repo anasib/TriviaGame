@@ -1,0 +1,54 @@
+
+body {
+    background-color: lightseagreen;
+    background-image: url("https://media.giphy.com/media/BmmfETghGOPrW/giphy.gif");
+    /* background-repeat: no-repeat, */
+
+}
+
+.jumbotron {
+    border-bottom: 5px solid greenyellow;
+    background: lightcoral;
+
+}
+
+.start-game {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+
+}
+
+.time-remaining {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+
+}
+
+.done-button {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.footer {
+    position: absolute;
+    display: flex;
+    bottom: 0%;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    background-origin: padding-box;
+    color: white;
+    padding: 2em;
+    background: rgb(0, 81, 128);
+    border-top: 5px solid rgb(0, 128, 64);
+
+}
