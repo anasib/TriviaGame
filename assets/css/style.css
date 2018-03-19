@@ -1,7 +1,7 @@
 
 body {
-    background-color: lightseagreen;
-    background-image: url("https://media.giphy.com/media/BmmfETghGOPrW/giphy.gif");
+    background-color: whitesmoke;
+    /* background-image: url("https://media.giphy.com/media/BmmfETghGOPrW/giphy.gif"); */
     /* background-repeat: no-repeat, */
 
 }
@@ -20,14 +20,14 @@ body {
 .header {
     display: flex;
     justify-content: space-around;
-    color: white;
+    /* color: white; */
 
 }
 
-.time-remaining {
+.timer {
     display: flex;
     justify-content: space-around;
-    color: white;
+    /* color: white; */
 
 }
 
@@ -36,10 +36,12 @@ body {
     justify-content: space-around;
 }
 
-
+.main-container {
+    display: none;
+}
 
 .footer {
-    position: absolute;
+    position: fixed;
     display: flex;
     bottom: 0%;
     width: 100%;
