@@ -1,8 +1,13 @@
+html, body {
+    height: 100%;
+}
 
 body {
     background-color: whitesmoke;
     /* background-image: url("https://media.giphy.com/media/BmmfETghGOPrW/giphy.gif"); */
     /* background-repeat: no-repeat, */
+    margin:0px;
+    padding: 0px;
 
 }
 
@@ -41,16 +46,20 @@ body {
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     display: flex;
     bottom: 0%;
+    top: 50%;
     width: 100%;
     justify-content: center;
     box-sizing: border-box;
     background-origin: padding-box;
-    color: white;
     padding: 2em;
     background: rgb(0, 81, 128);
-    border-top: 5px solid rgb(0, 128, 64);
+    border-top: 5px solid rgb(0, 128, 128);
+    height: 60px;
+    margin-top: 20px;
+    background-color: #111111;
+    color: #eeeeee;    
 
 }

@@ -46,24 +46,27 @@ $(document).ready(function () {
             },]
     };
 
-    var message = 'Game Over!';
+    var seconds = 30;
+    var capitalQs = worldCapitals.questions;
+    var counter = 0;
+    var gameOverMessage = "Game Over!";
+    var timeUpMessage = "Time's Up!";
 
     $(".start-game").on("click", function () {
         $('.main-container').show();
         console.log('Starting Trivia!!!');
         $(this).hide();
+        countdown();
+
     });
-
-    var seconds = 30;
-
-    $('#time-remaining').on('click', countdown);
 
     function decrement() {
         seconds--;
-        $('#time-remaining').html('<h2>' + "Seconds Remaining: " + seconds + '</h2>');
+        var timeRemaining = ('<h2>');
+        $('#time-remaining').html(timeRemaining + "Seconds Remaining: " + seconds);
         if (seconds === 0) {
             stop();
-            $('.message').html("Time's up!");
+            $('.message').html(timeUpMessage);
             checkAnswers();
         }
     };
@@ -76,25 +79,23 @@ $(document).ready(function () {
         clearInterval(counter);
     };
 
-    countdown();
+    //================FIX BELOW=================
 
     function formTemplate(data) {
         var questionString = " <form class='question'> " + data.question + "<br>";
         var possibles = data.possibles;
         for (var i = 0; i < possibles.length; i++) {
-            var possible = possibles[i];
-            console.log(possible);
-            questionString = questionString + " <input type='radio' name= '" + data.id + "' value= " + i + " > " + possible;
+            var possibleAnswers = possibles[i];
+            console.log(possibleAnswers);
+            questionString = questionString + " <input type='radio' name= '" + data.id + "' value= " + i + " > " + possibleAnswers;
         }
         return questionString + "</form>";
     }
 
-    window.formTemplate = formTemplate;
-
     function buildQuestions() {
         var questionHTML = ''
-        for (var i = 0; i < worldCapitals.questions.length; i++) {
-            questionHTML = questionHTML + formTemplate(worldCapitals.questions[i]);
+        for (var i = 0; i < capitalQs.length; i++) {
+            questionHTML = questionHTML + formTemplate(capitalQs[i]);
         }
         $('#questions-container').append(questionHTML);
     };
@@ -108,10 +109,10 @@ $(document).ready(function () {
 
     buildQuestions();
 
-    function resultsTemplate(question) {
-        var htmlBlock = '<div>'
-        htmlBlock = htmlBlock + question.question + ': ' + isChecked;
-        return htmlBlock + "</div>";
+    function resultsTemplate(data) {
+        var htmlBlock = ('<div>');
+        htmlBlock = htmlBlock + data.question + ': ' + isChecked;
+        return htmlBlock;
     };
 
     function checkAnswers() {
@@ -121,25 +122,22 @@ $(document).ready(function () {
         var incorrect = 0;
         var unAnswered = 0
 
-        for (var i = 0; i < worldCapitals.questions.length; i++) {
-            if (isCorrect(worldCapitals.questions[i])) {
+        for (var i = 0; i < capitalQs.length; i++) {
+            if (isCorrect(capitalQs[i])) {
                 correct++;
+            } else if (checkAnswered(capitalQs[i])) {
+                incorrect++;
             } else {
-                if (checkAnswered(worldCapitals.questions[i])) {
-                    incorrect++;
-                } else {
-                    unAnswered++;
-                }
+                unAnswered++;
             }
-
         }
 
         $('.results').html('correct: ' + correct + "<br>" + 'incorrect: ' + incorrect + "<br>" + 'unanswered: ' + unAnswered);
     };
 
-    function checkAnswered(question) {
+    function checkAnswered(data) {
         var anyAnswered = false;
-        var answers = $('[name=' + question.id + ']');
+        var answers = $('[capital=' + data.id + ']');
         for (var i = 0; i < answers.length; i++) {
             if (answers[i].checked) {
                 anyAnswered = true;
@@ -152,7 +150,7 @@ $(document).ready(function () {
     $('.done-button').on('click', function () {
         checkAnswers();
         stop();
-        $("#messageDiv").html(message);
+        $("#messageDiv").html(gameOverMessage);
     });
 
 
