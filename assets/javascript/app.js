@@ -67,7 +67,7 @@ $(document).ready(function () {
         if (seconds === 0) {
             stop();
             $('.message').html(timeUpMessage);
-            checkAnswers();
+            result();
         }
     };
 
@@ -94,28 +94,37 @@ $(document).ready(function () {
 
     function buildQuestions() {
         var questionHTML = ''
+        // var newForm = ('<form>');
+        // newForm.addClass('question');
+        // var possibles = worldCapitals.questions.possibles;
         for (var i = 0; i < capitalQs.length; i++) {
             questionHTML = questionHTML + formTemplate(capitalQs[i]);
         }
         $('#questions-container').append(questionHTML);
     };
 
-    function isCorrect(question) {
-        var answers = $('[capital= ' + question.id + ']');
-        var correct = answers.eq(question.answer);
+    buildQuestions();
+
+    function isCorrect(data) {
+        var answers = $(data.id);
+        var correct = answers.eq(data.answer);
         var isChecked = correct.is(':checked');
         return isChecked;
     };
 
-    buildQuestions();
+    function checkAnswered(data) {
+        var anyAnswered = false;
+        var answers = $(data.id);
+        for (var i = 0; i < answers.length; i++) {
+            if (answers[i].checked) {
+                anyAnswered = true;
+            }
+        }
+        return anyAnswered;
 
-    function resultsTemplate(data) {
-        var htmlBlock = ('<div>');
-        htmlBlock = htmlBlock + data.question + ': ' + isChecked;
-        return htmlBlock;
     };
 
-    function checkAnswers() {
+    function result() {
         var resultsHTML = '';
         var guessedAnswers = [];
         var correct = 0;
@@ -135,20 +144,8 @@ $(document).ready(function () {
         $('.results').html('correct: ' + correct + "<br>" + 'incorrect: ' + incorrect + "<br>" + 'unanswered: ' + unAnswered);
     };
 
-    function checkAnswered(data) {
-        var anyAnswered = false;
-        var answers = $('[capital=' + data.id + ']');
-        for (var i = 0; i < answers.length; i++) {
-            if (answers[i].checked) {
-                anyAnswered = true;
-            }
-        }
-        return anyAnswered;
-
-    };
-
     $('.done-button').on('click', function () {
-        checkAnswers();
+        result();
         stop();
         $("#messageDiv").html(gameOverMessage);
     });
