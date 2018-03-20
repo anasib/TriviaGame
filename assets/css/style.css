@@ -4,8 +4,8 @@ html, body {
 
 body {
     background-color: whitesmoke;
-    /* background-image: url("https://media.giphy.com/media/BmmfETghGOPrW/giphy.gif"); */
-    /* background-repeat: no-repeat, */
+    background-image: url("../images/globe.jpg");
+    background-repeat: repeat;
     margin:0px;
     padding: 0px;
 
@@ -13,7 +13,9 @@ body {
 
 .jumbotron {
     border-bottom: 5px solid greenyellow;
-    background: lightcoral;
+    background-color: gainsboro;
+    color: black;
+    padding: 0;
 
 }
 
@@ -25,14 +27,12 @@ body {
 .header {
     display: flex;
     justify-content: space-around;
-    /* color: white; */
 
 }
 
 .timer {
     display: flex;
     justify-content: space-around;
-    /* color: white; */
 
 }
 
@@ -43,6 +43,14 @@ body {
 
 .main-container {
     display: none;
+    color: rgba(255, 255, 255, 0.932);
+    font-size: bold;
+    padding: 6em
+    
+}
+
+.main-container .timer {
+    color:  white;
 }
 
 .footer {
@@ -55,7 +63,6 @@ body {
     box-sizing: border-box;
     background-origin: padding-box;
     padding: 2em;
-    background: rgb(0, 81, 128);
     border-top: 5px solid rgb(0, 128, 128);
     height: 60px;
     margin-top: 20px;

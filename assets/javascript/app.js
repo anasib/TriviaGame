@@ -4,12 +4,12 @@ $(document).ready(function () {
 
         questions: [
             {
-                question: "what is the capital of USA?",
+                question: "What is the capital of USA?",
                 possibles: ["California", "New York City", "Mara Lago", "Washington DC"],
                 id: "question-one",
                 answer: 3
             }, {
-                question: "what is the capital of Australia?",
+                question: "What is the capital of Australia?",
                 possibles: ["Adellaide", "New South Wales", "Canberra", "Tasmanian Tiger"],
                 id: "question-two",
                 answer: 2
