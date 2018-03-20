@@ -79,7 +79,7 @@ $(document).ready(function () {
         clearInterval(counter);
     };
 
-    //================FIX BELOW=================
+    //================Main Code=================
 
     function formTemplate(data) {
         var questionString = " <form class='question'> " + data.question + "<br>";
@@ -94,9 +94,6 @@ $(document).ready(function () {
 
     function buildQuestions() {
         var questionHTML = ''
-        // var newForm = ('<form>');
-        // newForm.addClass('question');
-        // var possibles = worldCapitals.questions.possibles;
         for (var i = 0; i < capitalQs.length; i++) {
             questionHTML = questionHTML + formTemplate(capitalQs[i]);
         }
