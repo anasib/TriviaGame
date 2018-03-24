@@ -54,10 +54,9 @@ body {
 }
 
 .footer {
-    position: relative;
+    position: fixed;
     display: flex;
     bottom: 0%;
-    top: 50%;
     width: 100%;
     justify-content: center;
     box-sizing: border-box;

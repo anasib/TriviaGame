@@ -57,7 +57,6 @@ $(document).ready(function () {
         console.log('Starting Trivia!!!');
         $(this).hide();
         countdown();
-
     });
 
     function decrement() {
@@ -79,14 +78,13 @@ $(document).ready(function () {
         clearInterval(counter);
     };
 
-    //================Main Code=================
 
     function formTemplate(data) {
         var questionString = " <form class='question'> " + data.question + "<br>";
         var possibles = data.possibles;
         for (var i = 0; i < possibles.length; i++) {
             var possibleAnswers = possibles[i];
-            console.log(possibleAnswers);
+            // console.log(possibleAnswers);
             questionString = questionString + " <input type='radio' name= '" + data.id + "' value= " + i + " > " + possibleAnswers;
         }
         return questionString + "</form>";
@@ -103,7 +101,9 @@ $(document).ready(function () {
     buildQuestions();
 
     function isCorrect(data) {
-        var answers = $(data.id);
+        var answers = $("input[name=" + data.id + "]");
+        console.log(answers);
+
         var correct = answers.eq(data.answer);
         var isChecked = correct.is(':checked');
         return isChecked;
@@ -111,7 +111,10 @@ $(document).ready(function () {
 
     function checkAnswered(data) {
         var anyAnswered = false;
-        var answers = $(data.id);
+        var answers = $("input[name=" + data.id + "]");
+        // $("#question-one")
+        // console.log(answers);
+
         for (var i = 0; i < answers.length; i++) {
             if (answers[i].checked) {
                 anyAnswered = true;
@@ -138,7 +141,7 @@ $(document).ready(function () {
             }
         }
 
-        $('.results').html('correct: ' + correct + "<br>" + 'incorrect: ' + incorrect + "<br>" + 'unanswered: ' + unAnswered);
+        $('.results').html('Correct: ' + correct + "<br>" + 'Incorrect: ' + incorrect + "<br>" + 'Unanswered: ' + unAnswered);
     };
 
     $('.done-button').on('click', function () {
